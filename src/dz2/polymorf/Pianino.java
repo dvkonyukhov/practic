@@ -6,4 +6,8 @@ public class Pianino extends MusicInstrument{
     {
         System.out.println("pianino sound");
     }
+
+    public Pianino() {
+        System.out.println("Конструктор пианино");
+    }
 }

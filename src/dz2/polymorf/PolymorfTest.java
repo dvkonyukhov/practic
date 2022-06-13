@@ -11,9 +11,6 @@ public class PolymorfTest {
         musicInstrumentList.add(new Pianino());
         musicInstrumentList.add(new MusicInstrument());
 
-        for (MusicInstrument element:musicInstrumentList
-             ) {
-            element.sound();
-        }
+        musicInstrumentList.forEach(MusicInstrument::sound);
     }
 }
