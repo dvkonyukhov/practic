@@ -4,8 +4,8 @@ import dz2.static_test.InfoStatic;
 
 public class StaticTest {
     public static void main(String[] args) {
-        System.out.println("Статичное поле (обращение через класс): " + InfoStatic.date);
-        System.out.println("Статичное поле (обращение через объект): " + new InfoStatic().date);
-        System.out.println("Статичный метод (обращение через класс): " + InfoStatic.getfreeMemory());
+        System.out.println("РЎС‚Р°С‚РёС‡РЅРѕРµ РїРѕР»Рµ (РѕР±СЂР°С‰РµРЅРёРµ С‡РµСЂРµР· РєР»Р°СЃСЃ): " + InfoStatic.date);
+        System.out.println("РЎС‚Р°С‚РёС‡РЅРѕРµ РїРѕР»Рµ (РѕР±СЂР°С‰РµРЅРёРµ С‡РµСЂРµР· РѕР±СЉРµРєС‚): " + new InfoStatic().date);
+        System.out.println("РЎС‚Р°С‚РёС‡РЅС‹Р№ РјРµС‚РѕРґ (РѕР±СЂР°С‰РµРЅРёРµ С‡РµСЂРµР· РєР»Р°СЃСЃ): " + InfoStatic.getfreeMemory());
     }
 }

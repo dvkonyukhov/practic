@@ -2,12 +2,12 @@ package dz2.modifier;
 
 public class ModifierTest {
     public static void main(String[] args) {
-        System.out.println("Проверка видимости в пределах пакета");
+        System.out.println("РџСЂРѕРІРµСЂРєР° РІРёРґРёРјРѕСЃС‚Рё РІ РїСЂРµРґРµР»Р°С… РїР°РєРµС‚Р°");
         Modifier modifier = new Modifier("1", "2", "3", "4");
-        System.out.println("Публичное поле: " + modifier.name);
-        System.out.println("В пределах пакета(по умолчанию) поле: " + modifier.nameDefaul);
-        // недоступно приватное поле
+        System.out.println("РџСѓР±Р»РёС‡РЅРѕРµ РїРѕР»Рµ: " + modifier.name);
+        System.out.println("Р’ РїСЂРµРґРµР»Р°С… РїР°РєРµС‚Р°(РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ) РїРѕР»Рµ: " + modifier.nameDefaul);
+        // РЅРµРґРѕСЃС‚СѓРїРЅРѕ РїСЂРёРІР°С‚РЅРѕРµ РїРѕР»Рµ
         //System.out.println(modifier.namePrivate);
-        System.out.println("Защищенное поле: " + modifier.nameProtected);
+        System.out.println("Р—Р°С‰РёС‰РµРЅРЅРѕРµ РїРѕР»Рµ: " + modifier.nameProtected);
     }
 }
