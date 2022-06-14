@@ -4,14 +4,14 @@ import dz2.modifier.Modifier;
 
 public class ModifierTest2 {
     public static void main(String[] args) {
-        System.out.println("Проверка видимости вне пакета");
+        System.out.println("РџСЂРѕРІРµСЂРєР° РІРёРґРёРјРѕСЃС‚Рё РІРЅРµ РїР°РєРµС‚Р°");
         Modifier modifier = new Modifier("1", "2", "3", "4");
-        System.out.println("Публичное поле: " + modifier.name);
-        // недоступно поле с видимостью по умолчанию в пределах пакета
+        System.out.println("РџСѓР±Р»РёС‡РЅРѕРµ РїРѕР»Рµ: " + modifier.name);
+        // РЅРµРґРѕСЃС‚СѓРїРЅРѕ РїРѕР»Рµ СЃ РІРёРґРёРјРѕСЃС‚СЊСЋ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РІ РїСЂРµРґРµР»Р°С… РїР°РєРµС‚Р°
         //System.out.println(modifier.nameDefaul);
-        // недоступно приватное поле
+        // РЅРµРґРѕСЃС‚СѓРїРЅРѕ РїСЂРёРІР°С‚РЅРѕРµ РїРѕР»Рµ
         //System.out.println(modifier.namePrivate);
-        // недоступно поле protected
+        // РЅРµРґРѕСЃС‚СѓРїРЅРѕ РїРѕР»Рµ protected
         //System.out.println(modifier.nameProtected);
         new ModifierTest3("1", "2", "3", "4").testModifiers();
     }
@@ -23,13 +23,13 @@ class ModifierTest3 extends Modifier {
     }
 
     void testModifiers() {
-        System.out.println("Проверка видимости вне пакета у наследника класса");
+        System.out.println("РџСЂРѕРІРµСЂРєР° РІРёРґРёРјРѕСЃС‚Рё РІРЅРµ РїР°РєРµС‚Р° Сѓ РЅР°СЃР»РµРґРЅРёРєР° РєР»Р°СЃСЃР°");
         ModifierTest3 modifier = new ModifierTest3("1", "2", "3", "4");
-        // недоступно поле с видимостью по умолчанию в пределах пакета
+        // РЅРµРґРѕСЃС‚СѓРїРЅРѕ РїРѕР»Рµ СЃ РІРёРґРёРјРѕСЃС‚СЊСЋ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РІ РїСЂРµРґРµР»Р°С… РїР°РєРµС‚Р°
         //System.out.println(modifier.nameDefaul);
-        // недоступно приватное поле
+        // РЅРµРґРѕСЃС‚СѓРїРЅРѕ РїСЂРёРІР°С‚РЅРѕРµ РїРѕР»Рµ
         //System.out.println(modifier.namePrivate);
-        // доступно поле protected
-        System.out.println("Защищенное поле: " + modifier.nameProtected);
+        // РґРѕСЃС‚СѓРїРЅРѕ РїРѕР»Рµ protected
+        System.out.println("Р—Р°С‰РёС‰РµРЅРЅРѕРµ РїРѕР»Рµ: " + modifier.nameProtected);
     }
 }
