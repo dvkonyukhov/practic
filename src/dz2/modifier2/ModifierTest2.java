@@ -4,14 +4,14 @@ import dz2.modifier.Modifier;
 
 public class ModifierTest2 {
     public static void main(String[] args) {
-        System.out.println("РџСЂРѕРІРµСЂРєР° РІРёРґРёРјРѕСЃС‚Рё РІРЅРµ РїР°РєРµС‚Р°");
+        System.out.println("Проверка видимости вне пакета");
         Modifier modifier = new Modifier("1", "2", "3", "4");
-        System.out.println("РџСѓР±Р»РёС‡РЅРѕРµ РїРѕР»Рµ: " + modifier.name);
-        // РЅРµРґРѕСЃС‚СѓРїРЅРѕ РїРѕР»Рµ СЃ РІРёРґРёРјРѕСЃС‚СЊСЋ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РІ РїСЂРµРґРµР»Р°С… РїР°РєРµС‚Р°
+        System.out.println("Публичное поле: " + modifier.name);
+        // недоступно поле с видимостью по умолчанию в пределах пакета
         //System.out.println(modifier.nameDefaul);
-        // РЅРµРґРѕСЃС‚СѓРїРЅРѕ РїСЂРёРІР°С‚РЅРѕРµ РїРѕР»Рµ
+        // недоступно приватное поле
         //System.out.println(modifier.namePrivate);
-        // РЅРµРґРѕСЃС‚СѓРїРЅРѕ РїРѕР»Рµ protected
+        // недоступно поле protected
         //System.out.println(modifier.nameProtected);
         new ModifierTest3("1", "2", "3", "4").testModifiers();
     }
@@ -23,13 +23,13 @@ class ModifierTest3 extends Modifier {
     }
 
     void testModifiers() {
-        System.out.println("РџСЂРѕРІРµСЂРєР° РІРёРґРёРјРѕСЃС‚Рё РІРЅРµ РїР°РєРµС‚Р° Сѓ РЅР°СЃР»РµРґРЅРёРєР° РєР»Р°СЃСЃР°");
+        System.out.println("Проверка видимости вне пакета у наследника класса");
         ModifierTest3 modifier = new ModifierTest3("1", "2", "3", "4");
-        // РЅРµРґРѕСЃС‚СѓРїРЅРѕ РїРѕР»Рµ СЃ РІРёРґРёРјРѕСЃС‚СЊСЋ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РІ РїСЂРµРґРµР»Р°С… РїР°РєРµС‚Р°
+        // недоступно поле с видимостью по умолчанию в пределах пакета
         //System.out.println(modifier.nameDefaul);
-        // РЅРµРґРѕСЃС‚СѓРїРЅРѕ РїСЂРёРІР°С‚РЅРѕРµ РїРѕР»Рµ
+        // недоступно приватное поле
         //System.out.println(modifier.namePrivate);
-        // РґРѕСЃС‚СѓРїРЅРѕ РїРѕР»Рµ protected
-        System.out.println("Р—Р°С‰РёС‰РµРЅРЅРѕРµ РїРѕР»Рµ: " + modifier.nameProtected);
+        // доступно поле protected
+        System.out.println("Защищенное поле: " + modifier.nameProtected);
     }
 }

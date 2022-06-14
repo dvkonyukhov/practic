@@ -8,6 +8,6 @@ public class Gitara extends MusicInstrument{
     }
 
     public Gitara() {
-        System.out.println("РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РіРёС‚Р°СЂР°");
+        System.out.println("Конструктор гитара");
     }
 }
