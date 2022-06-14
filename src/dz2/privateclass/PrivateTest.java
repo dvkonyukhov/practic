@@ -4,12 +4,12 @@ class NonPrivateClass {
 
     private class PrivateClass {
         public void test() {
-            System.out.println("Метод приватного класса");
+            System.out.println("РњРµС‚РѕРґ РїСЂРёРІР°С‚РЅРѕРіРѕ РєР»Р°СЃСЃР°");
         }
     }
 
     void test() {
-        System.out.println("Метод внешнего класса");
+        System.out.println("РњРµС‚РѕРґ РІРЅРµС€РЅРµРіРѕ РєР»Р°СЃСЃР°");
         PrivateClass privateClass = new PrivateClass();
         privateClass.test();
     }

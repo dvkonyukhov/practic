@@ -7,6 +7,6 @@ public class MusicInstrument {
     }
 
     public MusicInstrument() {
-        System.out.println("Конструктор музыкальный инструмент");
+        System.out.println("РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РјСѓР·С‹РєР°Р»СЊРЅС‹Р№ РёРЅСЃС‚СЂСѓРјРµРЅС‚");
     }
 }
