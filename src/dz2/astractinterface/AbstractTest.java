@@ -5,6 +5,7 @@ public class AbstractTest {
         Chair chair = new Chair("stul1");
         chair.setColor(Colors.BLUE);
         chair.changeColor(Colors.GREEN);
+        chair.changePrice(100);
         Table table = new Table("stol1");
         table.setColor(Colors.RED);
         table.setComment("comment");

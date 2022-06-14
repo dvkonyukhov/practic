@@ -2,6 +2,7 @@ package dz2.astractinterface;
 
 abstract public class Mebel {
     private final String name;
+    protected int price;
     Colors color;
     abstract void getColor();
 
@@ -22,6 +23,8 @@ abstract public class Mebel {
         return "Mebel{" +
                 "name='" + name + '\'' +
                 ", color=" + color +
+                ", colorcode=" + color +
+                ", price=" + price +
                 '}';
     }
 }
