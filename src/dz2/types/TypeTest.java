@@ -25,7 +25,7 @@ public class TypeTest {
         d = f % 2;
         ch = 't';
         i = new Random().nextInt(100);
-        // нельзя
+        // РЅРµР»СЊР·СЏ
         //bool = (boolean) bool1;
         i = i2;
         str = str + ch;
