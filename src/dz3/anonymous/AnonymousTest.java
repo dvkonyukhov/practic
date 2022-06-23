@@ -11,7 +11,7 @@ import java.util.List;
 public class AnonymousTest {
     public static void main(String[] args) {
 
-        // анонимный класс для запуска потока
+        // Р°РЅРѕРЅРёРјРЅС‹Р№ РєР»Р°СЃСЃ РґР»СЏ Р·Р°РїСѓСЃРєР° РїРѕС‚РѕРєР°
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -37,7 +37,7 @@ public class AnonymousTest {
             System.out.println(person);
         }
 
-        // анонимный класс для сортировки
+        // Р°РЅРѕРЅРёРјРЅС‹Р№ РєР»Р°СЃСЃ РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё
         personList.sort(new Comparator<>() {
             @Override
             public int compare(Person o1, Person o2) {
