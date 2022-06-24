@@ -6,27 +6,23 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        int countCustomers = entercountCustomers();
+        int countTakts = entercountCustomers();
+        int countCash = entercountCash();
 
-        Shop shop = new Shop("shop1", 100);
-        createCash(shop);
-
+        Shop shop = new Shop("shop1", countTakts, countCash);
+        shop.startProcess();
     }
 
     static int entercountCustomers() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите количество покупателей...");
+        System.out.println("Введите количество тактов работы:");
         return scanner.nextInt();
     }
 
-    static void createCash(Shop shop) {
-        Cash cash1 = new Cash("cash1", getRandomSpeed());
-        Cash cash2 = new Cash("cash2", getRandomSpeed());
-        Cash cash3 = new Cash("cash3", getRandomSpeed());
-        Cash cash4 = new Cash("cash4", getRandomSpeed());
+    static int entercountCash() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите количество касс:");
+        return scanner.nextInt();
     }
 
-    static int getRandomSpeed() {
-        return (new Random().nextInt(2) + 1);
-    }
 }
