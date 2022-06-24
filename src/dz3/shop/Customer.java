@@ -28,7 +28,7 @@ abstract public class Customer {
     }
 
     public String isJustComeIn() {
-        if (isJustComeIn == true)
+        if (isJustComeIn)
             return "(new)";
         else
             return "";

@@ -1,25 +1,24 @@
 package dz3.shop;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-        int countTakts = entercountCustomers();
-        int countCash = entercountCash();
+        int iterationCount = countCustomers();
+        int cashCount = countCash();
 
-        Shop shop = new Shop("shop1", countTakts, countCash);
+        Shop shop = new Shop(iterationCount, cashCount);
         shop.startProcess();
     }
 
-    static int entercountCustomers() {
+    static int countCustomers() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите количество тактов работы:");
         return scanner.nextInt();
     }
 
-    static int entercountCash() {
+    static int countCash() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите количество касс:");
         return scanner.nextInt();

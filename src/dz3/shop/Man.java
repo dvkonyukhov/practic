@@ -7,13 +7,13 @@ public class Man extends Customer {
     @Override
     void chooseCash(List<Cash> cashList) {
         Cash currentCash = cashList.get(0);
-        double currentSize = getTaktSizeOfQueque(currentCash);
+        double currentSpeedCash = getSpeedCash(currentCash);
         for (int i = 1; i < cashList.size(); i++) {
             Cash cash = cashList.get(i);
-            double TaktSizeOfQueque = getTaktSizeOfQueque(cash);
-            if (TaktSizeOfQueque < currentSize) {
+            double speedCash = getSpeedCash(cash);
+            if (speedCash < currentSpeedCash) {
                 currentCash = cash;
-                currentSize = TaktSizeOfQueque;
+                currentSpeedCash = speedCash;
             }
         }
         currentCash.addCustomer(this);
@@ -27,12 +27,12 @@ public class Man extends Customer {
         return (getClass().getSimpleName() + "(" + getPurchaseCount() + ")" + isJustComeIn());
     }
 
-    private double getTaktSizeOfQueque(Cash cash) {
+    private double getSpeedCash(Cash cash) {
         Deque<Customer> deque = cash.getQueue();
         if (cash.getSize() == 0) {
             return 0;
         } else {
-            int purchaseCount = 0;
+            double purchaseCount = 0;
             for (Customer customer : deque
             ) {
                 purchaseCount = purchaseCount + customer.getPurchaseCount();

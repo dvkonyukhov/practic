@@ -6,44 +6,44 @@ import java.util.List;
 import java.util.Random;
 
 public class Shop {
-    private final String NAME;
-    private List<Cash> cashList = new ArrayList();
-    private int countTakts;
-    private int countCash;
+    //private final String name;
+    private final List<Cash> cashes = new ArrayList<>();
+    private int iterationCount;
+    private final int cashCount;
 
-    public Shop(String name, int countTakts, int countCash) {
-        this.NAME = name;
-        this.countTakts = countTakts;
-        this.countCash = countCash;
+    public Shop(int iterationCount, int cashCount) {
+        //this.name = name;
+        this.iterationCount = iterationCount;
+        this.cashCount = cashCount;
     }
 
     public void addCash(Cash cash) {
-        cashList.add(cash);
+        cashes.add(cash);
     }
 
     public void startProcess() {
-        createCash(countCash);
-        while (countTakts > 0) {
+        createCash(cashCount);
+        while (iterationCount > 0) {
             System.out.println("_____Такт работы магазина_____");
             Customer customer = createCustomer();
-            customer.chooseCash(cashList);
+            customer.chooseCash(cashes);
             getInfo();
             startCash();
-            setisJustComeIn();
-            countTakts--;
+            setJustComeIn();
+            iterationCount--;
         }
     }
 
     private void getInfo() {
 
-        for (Cash cash : cashList) {
+        for (Cash cash : cashes) {
             System.out.println(cash.getInfo());
         }
 
     }
 
-    public void setisJustComeIn() {
-        for (Cash cash : cashList) {
+    public void setJustComeIn() {
+        for (Cash cash : cashes) {
             Deque<Customer> queue = cash.getQueue();
             for (Customer customer : queue
             ) {
@@ -53,7 +53,7 @@ public class Shop {
     }
 
     private void startCash() {
-        for (Cash cash : cashList) {
+        for (Cash cash : cashes) {
             cash.serveCustomer();
         }
     }
@@ -66,14 +66,13 @@ public class Shop {
     }
 
     private Customer createCustomer() {
-        ArrayList<Customer> arrayListofCustomer = new ArrayList<>();
+        ArrayList<Customer> listCustomers = new ArrayList<>();
         int countCustomers = 3;
         int countPurchase = 10;
-        arrayListofCustomer.add(new Child(new Random().nextInt(countPurchase) + 1));
-        arrayListofCustomer.add(new Man(new Random().nextInt(countPurchase) + 1));
-        arrayListofCustomer.add(new Woman(new Random().nextInt(countPurchase) + 1));
-        Customer customer = arrayListofCustomer.get(new Random().nextInt(countCustomers));
-        return customer;
+        listCustomers.add(new Child(new Random().nextInt(countPurchase) + 1));
+        listCustomers.add(new Man(new Random().nextInt(countPurchase) + 1));
+        listCustomers.add(new Woman(new Random().nextInt(countPurchase) + 1));
+        return listCustomers.get(new Random().nextInt(countCustomers));
     }
 
     static int getRandomSpeed() {

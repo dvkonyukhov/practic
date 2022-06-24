@@ -3,12 +3,12 @@ package dz3.shop;
 import java.util.*;
 
 public class Cash {
-    private final String name;
-    private int speed;
-    private Deque<Customer> queue = new LinkedList<>();
+    private final String NAME;
+    private final int speed;
+    private final Deque<Customer> queue = new LinkedList<>();
 
-    public Cash(String name, int speed) {
-        this.name = name;
+    public Cash(String NAME, int speed) {
+        this.NAME = NAME;
         this.speed = speed;
     }
 
@@ -19,15 +19,14 @@ public class Cash {
         }
         int countPurchase = currentCustomer.getPurchaseCount() - getSpeed();
         if (countPurchase >= 0) {
-            System.out.println(getName() + " обслужила покупателя: " + currentCustomer.getInfo() + " Количество покупок осталось: " + countPurchase);
+            System.out.println(getNAME() + " обслужила покупателя: " + currentCustomer.getInfo() + " Количество покупок осталось: " + countPurchase);
             if (countPurchase == 0) {
                 deleteCurrentCustomer();
             } else {
                 currentCustomer.changePurchaseCount(countPurchase);
             }
-            return;
         } else {
-            System.out.println(getName() + " обслужила покупателя: " + currentCustomer.getInfo() + " Количество покупок осталось: " + 0);
+            System.out.println(getNAME() + " обслужила покупателя: " + currentCustomer.getInfo() + " Количество покупок осталось: " + 0);
             currentCustomer.changePurchaseCount(0);
             deleteCurrentCustomer();
             serveCustomer();
@@ -36,15 +35,13 @@ public class Cash {
     }
 
     public String getInfo() {
-        StringBuilder builder = new StringBuilder(getName() + " очередь: ");
-        for (Customer customer : queue) {
-            builder.append(" " + customer.getInfo());
-        }
+        StringBuilder builder = new StringBuilder(getNAME() + " очередь: ");
+        for (Customer customer : queue) builder.append(" ").append(customer.getInfo());
         return builder.toString();
     }
 
-    public String getName() {
-        return "Касса " + name + " (" + getSpeed() + ")";
+    public String getNAME() {
+        return "Касса " + NAME + " (" + getSpeed() + ")";
     }
 
     public void deleteCurrentCustomer() {
@@ -66,4 +63,5 @@ public class Cash {
     public Deque<Customer> getQueue() {
         return queue;
     }
+
 }

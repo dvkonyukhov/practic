@@ -1,7 +1,6 @@
 package dz3.shop;
 
 import java.util.List;
-import java.util.Random;
 
 public class Woman extends Customer {
     @Override
