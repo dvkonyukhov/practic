@@ -3,7 +3,7 @@ package dz3.shop;
 import java.util.Deque;
 import java.util.List;
 
-public class Men extends Customer {
+public class Man extends Customer {
     @Override
     void chooseCash(List<Cash> cashList) {
         Cash currentCash = cashList.get(0);
@@ -19,7 +19,7 @@ public class Men extends Customer {
         currentCash.addCustomer(this);
     }
 
-    public Men(int purchaseCount) {
+    public Man(int purchaseCount) {
         super(purchaseCount);
     }
 

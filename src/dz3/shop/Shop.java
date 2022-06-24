@@ -70,7 +70,7 @@ public class Shop {
         int countCustomers = 3;
         int countPurchase = 10;
         arrayListofCustomer.add(new Child(new Random().nextInt(countPurchase) + 1));
-        arrayListofCustomer.add(new Men(new Random().nextInt(countPurchase) + 1));
+        arrayListofCustomer.add(new Man(new Random().nextInt(countPurchase) + 1));
         arrayListofCustomer.add(new Woman(new Random().nextInt(countPurchase) + 1));
         Customer customer = arrayListofCustomer.get(new Random().nextInt(countCustomers));
         return customer;
