@@ -51,7 +51,7 @@ public class Shop {
 
     private void startCash() {
         for (Cash cash : cashes) {
-            cash.serveCustomer();
+            cash.serveCustomer(0);
         }
     }
 

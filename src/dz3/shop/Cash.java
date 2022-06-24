@@ -12,12 +12,12 @@ public class Cash {
         this.speed = speed;
     }
 
-    public void serveCustomer() {
+    public void serveCustomer(int PurchaseCount) {
         Customer currentCustomer = queue.peek();
         if (currentCustomer == null) {
             return;
         }
-        int countPurchase = currentCustomer.getPurchaseCount() - getSpeed();
+        int countPurchase = currentCustomer.getPurchaseCount() - (getSpeed() - PurchaseCount);
         if (countPurchase >= 0) {
             System.out.println(getNAME() + " обслужила покупателя: " + currentCustomer.getInfo() + " Количество покупок осталось: " + countPurchase);
             if (countPurchase == 0) {
@@ -29,7 +29,8 @@ public class Cash {
             System.out.println(getNAME() + " обслужила покупателя: " + currentCustomer.getInfo() + " Количество покупок осталось: " + 0);
             currentCustomer.changePurchaseCount(0);
             deleteCurrentCustomer();
-            serveCustomer();
+            PurchaseCount = getSpeed() + countPurchase;
+            serveCustomer(PurchaseCount);
         }
 
     }
