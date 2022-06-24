@@ -1,9 +1,6 @@
 package dz3.shop;
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Shop {
     //private final String name;
@@ -44,7 +41,7 @@ public class Shop {
 
     public void setJustComeIn() {
         for (Cash cash : cashes) {
-            Deque<Customer> queue = cash.getQueue();
+            Queue<Customer> queue = cash.getQueue();
             for (Customer customer : queue
             ) {
                 customer.setJustComeIn(false);

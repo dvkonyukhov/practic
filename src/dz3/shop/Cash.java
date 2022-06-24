@@ -5,7 +5,7 @@ import java.util.*;
 public class Cash {
     private final String NAME;
     private final int speed;
-    private final Deque<Customer> queue = new LinkedList<>();
+    private final Queue<Customer> queue = new LinkedList<>();
 
     public Cash(String NAME, int speed) {
         this.NAME = NAME;
@@ -60,7 +60,7 @@ public class Cash {
         return speed;
     }
 
-    public Deque<Customer> getQueue() {
+    public Queue<Customer> getQueue() {
         return queue;
     }
 

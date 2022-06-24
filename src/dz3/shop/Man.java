@@ -1,7 +1,7 @@
 package dz3.shop;
 
-import java.util.Deque;
 import java.util.List;
+import java.util.Queue;
 
 public class Man extends Customer {
     @Override
@@ -28,7 +28,7 @@ public class Man extends Customer {
     }
 
     private double getSpeedCash(Cash cash) {
-        Deque<Customer> deque = cash.getQueue();
+        Queue<Customer> deque = cash.getQueue();
         if (cash.getSize() == 0) {
             return 0;
         } else {
