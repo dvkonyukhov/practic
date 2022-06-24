@@ -6,12 +6,13 @@ public class Shop {
     //private final String name;
     private final List<Cash> cashes = new ArrayList<>();
     private int iterationCount;
-    private final int cashCount;
 
     public Shop(int iterationCount, int cashCount) {
-        //this.name = name;
         this.iterationCount = iterationCount;
-        this.cashCount = cashCount;
+        for (int i = 1; i < cashCount + 1; i++){
+            Cash cash = new Cash(("cash" + i), getRandomSpeed());
+            addCash(cash);
+        }
     }
 
     public void addCash(Cash cash) {
@@ -19,19 +20,18 @@ public class Shop {
     }
 
     public void startProcess() {
-        createCash(cashCount);
         while (iterationCount > 0) {
             System.out.println("_____Такт работы магазина_____");
             Customer customer = createCustomer();
             customer.chooseCash(cashes);
-            getInfo();
+            printInfo();
             startCash();
             setJustComeIn();
             iterationCount--;
         }
     }
 
-    private void getInfo() {
+    private void printInfo() {
 
         for (Cash cash : cashes) {
             System.out.println(cash.getInfo());
@@ -55,13 +55,6 @@ public class Shop {
         }
     }
 
-    private void createCash(int count) {
-        for (int i = 1; i < count + 1; i++){
-            Cash cash = new Cash(("cash" + i), getRandomSpeed());
-            addCash(cash);
-        }
-    }
-
     private Customer createCustomer() {
         ArrayList<Customer> listCustomers = new ArrayList<>();
         int countCustomers = 3;
@@ -73,6 +66,6 @@ public class Shop {
     }
 
     static int getRandomSpeed() {
-        return (new Random().nextInt(2) + 1);
+        return (new Random().nextInt(3) + 1);
     }
 }

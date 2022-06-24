@@ -4,10 +4,10 @@ import java.util.List;
 
 public class Woman extends Customer {
     @Override
-    void chooseCash(List<Cash> cashList) {
-        Cash currentCash = cashList.get(0);
-        for (int i = 1; i < cashList.size(); i++) {
-            Cash cash = cashList.get(i);
+    void chooseCash(List<Cash> cashes) {
+        Cash currentCash = cashes.get(0);
+        for (int i = 1; i < cashes.size(); i++) {
+            Cash cash = cashes.get(i);
             if (cash.getSize() < currentCash.getSize()) {
                 currentCash = cash;
             }

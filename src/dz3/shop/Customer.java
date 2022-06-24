@@ -6,7 +6,7 @@ abstract public class Customer {
     private int purchaseCount;
     protected boolean isJustComeIn;
 
-    abstract void chooseCash(List<Cash> cashList);
+    abstract void chooseCash(List<Cash> cashes);
 
     abstract String getInfo();
 

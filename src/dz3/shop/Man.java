@@ -5,11 +5,11 @@ import java.util.Queue;
 
 public class Man extends Customer {
     @Override
-    void chooseCash(List<Cash> cashList) {
-        Cash currentCash = cashList.get(0);
+    void chooseCash(List<Cash> cashes) {
+        Cash currentCash = cashes.get(0);
         double currentSpeedCash = getSpeedCash(currentCash);
-        for (int i = 1; i < cashList.size(); i++) {
-            Cash cash = cashList.get(i);
+        for (int i = 1; i < cashes.size(); i++) {
+            Cash cash = cashes.get(i);
             double speedCash = getSpeedCash(cash);
             if (speedCash < currentSpeedCash) {
                 currentCash = cash;
