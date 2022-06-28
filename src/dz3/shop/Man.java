@@ -1,16 +1,15 @@
 package dz3.shop;
 
 import java.util.List;
-import java.util.Queue;
 
 public class Man extends Customer {
     @Override
     void chooseCash(List<Cash> cashes) {
         Cash currentCash = cashes.get(0);
-        double currentSpeedCash = getSpeedCash(currentCash);
+        double currentSpeedCash = currentCash.getSpeedCash();
         for (int i = 1; i < cashes.size(); i++) {
             Cash cash = cashes.get(i);
-            double speedCash = getSpeedCash(cash);
+            double speedCash = cash.getSpeedCash();
             if (speedCash < currentSpeedCash) {
                 currentCash = cash;
                 currentSpeedCash = speedCash;
@@ -25,21 +24,6 @@ public class Man extends Customer {
 
     public String getInfo() {
         return (getClass().getSimpleName() + "(" + getPurchaseCount() + ")" + isJustComeIn());
-    }
-
-    private double getSpeedCash(Cash cash) {
-        Queue<Customer> deque = cash.getQueue();
-        if (cash.getSize() == 0) {
-            return 0;
-        } else {
-            double purchaseCount = 0;
-            for (Customer customer : deque
-            ) {
-                purchaseCount = purchaseCount + customer.getPurchaseCount();
-            }
-            return purchaseCount / cash.getSpeed();
-        }
-
     }
 
 }

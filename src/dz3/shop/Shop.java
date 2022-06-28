@@ -6,9 +6,11 @@ public class Shop {
     //private final String name;
     private final List<Cash> cashes = new ArrayList<>();
     private int iterationCount;
+    private final CustomerFactory customerFactory;
 
     public Shop(int iterationCount, int cashCount) {
         this.iterationCount = iterationCount;
+        customerFactory = new CustomerFactory();
         for (int i = 1; i < cashCount + 1; i++){
             Cash cash = new Cash(("cash" + i), getRandomSpeed());
             addCash(cash);
@@ -22,7 +24,7 @@ public class Shop {
     public void startProcess() {
         while (iterationCount > 0) {
             System.out.println("_____Такт работы магазина_____");
-            Customer customer = createCustomer();
+            Customer customer = customerFactory.createCustomer();
             customer.chooseCash(cashes);
             printInfo();
             startCash();

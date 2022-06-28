@@ -12,12 +12,12 @@ public class Cash {
         this.speed = speed;
     }
 
-    public void serveCustomer(int PurchaseCount) {
+    public void serveCustomer(int numberOfPurchaseFromLastProceededCustomer) {
         Customer currentCustomer = queue.peek();
         if (currentCustomer == null) {
             return;
         }
-        int countPurchase = currentCustomer.getPurchaseCount() - (getSpeed() - PurchaseCount);
+        int countPurchase = currentCustomer.getPurchaseCount() - (getSpeed() - numberOfPurchaseFromLastProceededCustomer);
         if (countPurchase >= 0) {
             System.out.println(getNAME() + " обслужила покупателя: " + currentCustomer.getInfo() + " Количество покупок осталось: " + countPurchase);
             if (countPurchase == 0) {
@@ -29,8 +29,8 @@ public class Cash {
             System.out.println(getNAME() + " обслужила покупателя: " + currentCustomer.getInfo() + " Количество покупок осталось: " + 0);
             currentCustomer.changePurchaseCount(0);
             deleteCurrentCustomer();
-            PurchaseCount = getSpeed() + countPurchase;
-            serveCustomer(PurchaseCount);
+            numberOfPurchaseFromLastProceededCustomer = getSpeed() + countPurchase;
+            serveCustomer(numberOfPurchaseFromLastProceededCustomer);
         }
 
     }
@@ -63,6 +63,21 @@ public class Cash {
 
     public Queue<Customer> getQueue() {
         return queue;
+    }
+
+    public double getSpeedCash() {
+
+        if (getSize() == 0) {
+            return 0;
+        } else {
+            double purchaseCount = 0;
+            for (Customer customer : queue
+            ) {
+                purchaseCount = purchaseCount + customer.getPurchaseCount();
+            }
+            return purchaseCount / getSpeed();
+        }
+
     }
 
 }
