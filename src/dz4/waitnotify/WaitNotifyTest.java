@@ -5,7 +5,7 @@ public class WaitNotifyTest {
     public static void main(String[] args) throws InterruptedException {
         Message msg = new Message("обработать");
         Waiter waiter = new Waiter(msg);
-        new Thread(waiter,"waiter1").start();
+        new Thread(waiter, "waiter1").start();
 
         Waiter waiter1 = new Waiter(msg);
         new Thread(waiter1, "waiter2").start();
