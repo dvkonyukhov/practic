@@ -15,7 +15,7 @@ public class FileTest {
     private static void testInput(File file) {
         System.out.println("Чтение через fileInputStream:");
         try (FileInputStream fileInputStream = new FileInputStream(file)) {
-            int i = -1;
+            int i;
             while ((i = fileInputStream.read()) != -1) {
                 System.out.print((char) i);
             }
