@@ -39,7 +39,7 @@ public class FileCopyTest {
         try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
             StringBuffer stringBuffer = new StringBuffer();
 
-            for (int i = 0; i < 50; i++) {
+            for (int i = 0; i < 15; i++) {
                 stringBuffer.append(i);
             }
 
@@ -82,6 +82,7 @@ public class FileCopyTest {
                             }
                         }
                     }
+                    message.setMsg("stop");
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -95,15 +96,18 @@ public class FileCopyTest {
         Thread threadListenerInput = new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                String commandStop = "stop";
                 Scanner scanner = new Scanner(System.in);
-                String textUser = scanner.nextLine();
-                synchronized (message) {
-                    message.setMsg(textUser);
+                while (true) {
+                    String textUser = scanner.nextLine();
+                    synchronized (message) {
+                        if (textUser.equals(commandStop) || message.getMsg().equals(commandStop)) {
+                            message.setMsg(textUser);
+                        }
+                        {
+                            break;
+                        }
+                    }
                 }
             }
         });
