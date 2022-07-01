@@ -4,7 +4,7 @@ public class WaitNotify2Test {
 
     public static void main(String[] args) {
 
-        Store store=new Store();
+        Store store = new Store();
         Producer producer = new Producer(store);
         Consumer consumer = new Consumer(store);
         new Thread(producer).start();
@@ -12,14 +12,14 @@ public class WaitNotify2Test {
     }
 }
 
-class Store{
-    private int product=0;
+class Store {
+    private int product = 0;
+
     public synchronized void get() {
-        while (product<1) {
+        while (product < 1) {
             try {
                 wait();
-            }
-            catch (InterruptedException e) {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
@@ -28,12 +28,12 @@ class Store{
         System.out.println("Товаров на складе: " + product);
         notify();
     }
+
     public synchronized void put() {
-        while (product>=3) {
+        while (product >= 3) {
             try {
                 wait();
-            }
-            catch (InterruptedException e) {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
@@ -44,26 +44,30 @@ class Store{
     }
 }
 
-class Producer implements Runnable{
+class Producer implements Runnable {
 
     Store store;
-    Producer(Store store){
-        this.store=store;
+
+    Producer(Store store) {
+        this.store = store;
     }
-    public void run(){
+
+    public void run() {
         for (int i = 1; i < 6; i++) {
             store.put();
         }
     }
 }
 
-class Consumer implements Runnable{
+class Consumer implements Runnable {
 
     Store store;
-    Consumer(Store store){
-        this.store=store;
+
+    Consumer(Store store) {
+        this.store = store;
     }
-    public void run(){
+
+    public void run() {
         for (int i = 1; i < 6; i++) {
             store.get();
         }
