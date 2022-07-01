@@ -1,6 +1,6 @@
 package dz4.box;
 
-public class ConsumerBox extends Thread {
+public class ConsumerBox implements Runnable{
     private final Box box;
 
     @Override

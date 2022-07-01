@@ -2,7 +2,7 @@ package dz4.box;
 
 import java.util.Random;
 
-public class ProducerBox extends Thread {
+public class ProducerBox implements Runnable{
     private final Box box;
 
     @Override
