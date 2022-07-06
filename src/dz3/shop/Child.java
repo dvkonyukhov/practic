@@ -6,9 +6,10 @@ import java.util.Random;
 public class Child extends Customer {
 
     @Override
-    void chooseCash(List<Cash> cashes) {
+    Cash chooseCash(List<Cash> cashes) {
         Cash cash = cashes.get(new Random().nextInt(cashes.size()));
         cash.addCustomer(this);
+        return  cash;
     }
 
     public Child(int purchaseCount) {

@@ -7,7 +7,7 @@ public class CustomerFactory {
     public Customer createCustomer() {
 
         int countCustomers = 2;
-        int maxCountPurchase = 10;
+        int maxCountPurchase = 5;
         int customerNumber = new Random().nextInt(countCustomers);
 
         Customer newCustomer = null;

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Woman extends Customer {
     @Override
-    void chooseCash(List<Cash> cashes) {
+    Cash chooseCash(List<Cash> cashes) {
         Cash currentCash = cashes.get(0);
         for (int i = 1; i < cashes.size(); i++) {
             Cash cash = cashes.get(i);
@@ -13,6 +13,7 @@ public class Woman extends Customer {
             }
         }
         currentCash.addCustomer(this);
+        return currentCash;
     }
 
     public Woman(int purchaseCount) {
