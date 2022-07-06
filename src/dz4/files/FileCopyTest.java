@@ -2,10 +2,7 @@ package dz4.files;
 
 import dz4.waitnotify.Message;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 public class FileCopyTest {

@@ -5,13 +5,13 @@ import java.util.*;
 public class Shop {
     //private final String name;
     private final List<Cash> cashes = new ArrayList<>();
-    private int iterationCount;
+    private final int iterationCount;
     private final CustomerFactory customerFactory;
 
     public Shop(int iterationCount, int cashCount) {
         this.iterationCount = iterationCount;
         customerFactory = new CustomerFactory();
-        for (int i = 1; i < cashCount + 1; i++){
+        for (int i = 1; i < cashCount + 1; i++) {
             Cash cash = new Cash(("cash" + i), getRandomSpeed());
             addCash(cash);
         }
@@ -22,14 +22,50 @@ public class Shop {
     }
 
     public void startProcess() {
-        while (iterationCount > 0) {
-            System.out.println("_____Такт работы магазина_____");
-            Customer customer = customerFactory.createCustomer();
-            customer.chooseCash(cashes);
-            printInfo();
-            startCash();
-            setJustComeIn();
-            iterationCount--;
+
+        CreateCustomer(iterationCount);
+        ServeCustomers(iterationCount);
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void ServeCustomers() {
+        while (true) {
+            Thread threadCash = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    synchronized (cashes) {
+                        startCash();
+                    }
+                    setJustComeIn();
+                }
+            });
+            threadCash.start();
+        }
+    }
+
+    private void CreateCustomer(int iterationCountForCustomer) {
+
+        while (iterationCountForCustomer > 0) {
+            Thread threadCustomer = new Thread(() -> {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Customer customer = customerFactory.createCustomer();
+                synchronized (cashes) {
+                    customer.chooseCash(cashes);
+                }
+                printInfo();
+            });
+            threadCustomer.start();
+            iterationCountForCustomer--;
         }
     }
 
@@ -55,16 +91,6 @@ public class Shop {
         for (Cash cash : cashes) {
             cash.serveCustomer(0);
         }
-    }
-
-    private Customer createCustomer() {
-        ArrayList<Customer> listCustomers = new ArrayList<>();
-        int countCustomers = 3;
-        int countPurchase = 10;
-        listCustomers.add(new Child(new Random().nextInt(countPurchase) + 1));
-        listCustomers.add(new Man(new Random().nextInt(countPurchase) + 1));
-        listCustomers.add(new Woman(new Random().nextInt(countPurchase) + 1));
-        return listCustomers.get(new Random().nextInt(countCustomers));
     }
 
     static int getRandomSpeed() {
