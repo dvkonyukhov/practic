@@ -9,11 +9,11 @@ public class ClientSocket implements Runnable {
     private Server server;
     private PrintWriter outMessage;
     private Scanner inMessage;
-    private static int clients_count = 0;
+    private static int clientsCount = 0;
 
     public ClientSocket(Socket socket, Server server) {
         try {
-            clients_count++;
+            clientsCount++;
             this.server = server;
             this.outMessage = new PrintWriter(socket.getOutputStream());
             this.inMessage = new Scanner(socket.getInputStream());
@@ -25,7 +25,7 @@ public class ClientSocket implements Runnable {
     @Override
     public void run() {
         server.sendMessageToAllClients("Новый участник вошёл в чат!");
-        server.sendMessageToAllClients("Клиентов в чате = " + clients_count);
+        server.sendMessageToAllClients("Клиентов в чате = " + clientsCount);
 
         while (true) {
             if (inMessage.hasNext()) {
@@ -52,7 +52,7 @@ public class ClientSocket implements Runnable {
 
     public void close() {
         server.removeClient(this);
-        clients_count--;
-        server.sendMessageToAllClients("Клиентов в чате = " + clients_count);
+        clientsCount--;
+        server.sendMessageToAllClients("Клиентов в чате = " + clientsCount);
     }
 }

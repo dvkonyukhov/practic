@@ -1,13 +1,14 @@
 package dz3.enums;
 
 public enum Eyes {
-    GREEN("Зеленые", 2), BROWN("Карие", 6), BLUE("Голубые", 1);
+    GREEN("Zelenye", 2), BROWN("Karie", 6), BLUE("Golubie", 1);
     private transient String comment;
     private transient int id;
 
     Eyes(String comment, int id) {
         this.comment = comment;
         this.id = id;
+        System.out.println("сработал конструктор");
     }
 
     public String getComment() {
