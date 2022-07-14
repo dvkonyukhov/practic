@@ -1,7 +1,5 @@
 package dz5.socket;
 
-import dz5.socket.ClientSocket;
-
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
