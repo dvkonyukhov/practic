@@ -1,4 +1,4 @@
-package dz5;
+package dz5.socket;
 
 import java.io.IOException;
 import java.io.PrintWriter;
