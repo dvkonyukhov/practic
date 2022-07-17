@@ -33,9 +33,10 @@ public class Server {
 
     }
 
-    public void sendMessageToAllClients(String msg) {
-        for (ClientSocket o : clients) {
-            o.sendMsg(msg);
+    public void sendMessageToAllClients(String msg, ClientSocket currentClientSocket) {
+        for (ClientSocket clientSocket : clients) {
+            if (clientSocket != currentClientSocket)
+                clientSocket.sendMsg(msg);
         }
 
     }
