@@ -11,25 +11,24 @@ public class Server {
 
     public Server() {
 
-        ServerSocket serverSocket = null;
-        try {
-            serverSocket = new ServerSocket(PORT);
+        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+            System.out.println("Старт Сервера!");
+
+            while (true) {
+                Socket clientSocket = null;
+                try {
+                    clientSocket = serverSocket.accept();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                ClientSocket client = new ClientSocket(clientSocket, this);
+                clients.add(client);
+                new Thread(client).start();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Старт Сервера!");
 
-        while (true) {
-            Socket clientSocket = null;
-            try {
-                clientSocket = serverSocket.accept();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            ClientSocket client = new ClientSocket(clientSocket, this);
-            clients.add(client);
-            new Thread(client).start();
-        }
 
     }
 
