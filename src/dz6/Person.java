@@ -5,16 +5,8 @@ public class Person implements Cloneable {
     String name;
     Document document;
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setDocument(Document document) {
-        this.document = document;
     }
 
     public Person(int age, String name, Document document) {
